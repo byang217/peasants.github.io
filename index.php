@@ -5,18 +5,27 @@ $uri = "mysql://avnadmin:AVNS_b67rNVhKeKkTjvKDtk4@etp-database-etp-database.h.ai
 $fields = parse_url($uri);
 
 // build the DSN including SSL settings
-$conn = "mysql:";
-$conn .= "host=" . $fields["host"];
-$conn .= ";port=" . $fields["port"];;
-$conn .= ";dbname=etpprograms";
-$conn .= ";sslmode=verify-ca;sslrootcert=ca.pem";
+$constr = "mysql:";
+$constr .= "host=" . $fields["host"];
+$constr .= ";port=" . $fields["port"];;
+$constr .= ";dbname=etpprograms";
+$constr .= ";sslmode=verify-ca;sslrootcert=ca.pem";
 
 try {
-  $db = new PDO($conn, $fields["user"], $fields["pass"]);
+  $conn = new PDO($constr, $fields["user"], $fields["pass"]);
 
-  $stmt = $db->query("SELECT VERSION()");
-  print($stmt->fetch()[0]);
+  $stmt = $conn->prepare('SELECT * FROM test');
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  print_r($result);
+  
+  foreach ($result as $value) {
+    foreach ($value as $newvalue)
+    {
+        echo $newvalue, "\n";
+    }
+  }
+    
 } catch (Exception $e) {
   echo "Error: " . $e->getMessage();
 }
-
