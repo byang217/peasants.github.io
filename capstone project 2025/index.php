@@ -1,7 +1,7 @@
 
 <?php
 
-$uri = "mysql://avnadmin:************************@etp-database-etp-database.h.aivencloud.com:17731/defaultdb?ssl-mode=REQUIRED";
+$uri = "mysql://avnadmin:AVNS_b67rNVhKeKkTjvKDtk4@etp-database-etp-database.h.aivencloud.com:17731/defaultdb?ssl-mode=REQUIRED";
 
 $fields = parse_url($uri);
 
