@@ -8,7 +8,7 @@ $fields = parse_url($uri);
 $conn = "mysql:";
 $conn .= "host=" . $fields["host"];
 $conn .= ";port=" . $fields["port"];;
-$conn .= ";dbname=defaultdb";
+$conn .= ";dbname=etpprograms";
 $conn .= ";sslmode=verify-ca;sslrootcert=ca.pem";
 
 try {
