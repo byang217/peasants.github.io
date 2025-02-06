@@ -15,16 +15,15 @@ try {
   $conn = new PDO($constr, $fields["user"], $fields["pass"]);
 
   $stmt = $conn->prepare('SELECT * FROM test');
-  $stmt->execute();
-  $result = $stmt->fetchAll();
-  print_r($result);
   
-  foreach ($result as $value) {
-    foreach ($value as $newvalue)
-    {
-        echo $newvalue, "\n";
-    }
+  $stmt->execute();
+
+  while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
+  {
+    echo implode(" ", $result);
+    echo "\n";
   }
+  
     
 } catch (Exception $e) {
   echo "Error: " . $e->getMessage();
