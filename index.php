@@ -14,6 +14,8 @@ $constr .= ";sslmode=verify-ca;sslrootcert=ca.pem";
 try {
   $conn = new PDO($constr, $fields["user"], $fields["pass"]);
 
+  // To run a SQL query, do  $var = $conn->prepare('SQL query goes here'), then do $var->execute();
+  /*
   $stmt = $conn->prepare('SELECT * FROM test');
   
   $stmt->execute();
@@ -23,7 +25,7 @@ try {
     echo implode(" ", $result);
     echo "\n";
   }
-  
+  */
     
 } catch (Exception $e) {
   echo "Error: " . $e->getMessage();
