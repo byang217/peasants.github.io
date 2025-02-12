@@ -5,28 +5,37 @@ $uri = "mysql://avnadmin:AVNS_b67rNVhKeKkTjvKDtk4@etp-database-etp-database.h.ai
 $fields = parse_url($uri);
 
 // build the DSN including SSL settings
-$constr = "mysql:";
-$constr .= "host=" . $fields["host"];
-$constr .= ";port=" . $fields["port"];;
-$constr .= ";dbname=etpprograms";
-$constr .= ";sslmode=verify-ca;sslrootcert=ca.pem";
+$host = $fields["host"];
+$port = $fields["port"];
+$dbname = "etpprograms";
+$username = $fields["user"];
+$password = $fields["pass"];
+$ssl_cert = "ca.pem";
 
-try {
-  $conn = new PDO($constr, $fields["user"], $fields["pass"]);
+// Create connection
+$conn = new mysqli($host, $username, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
 
-  // To run a SQL query, do  $var = $conn->prepare('SQL query goes here'), then do $var->execute();
-  /*
-  $stmt = $conn->prepare('SELECT * FROM test');
-  
-  $stmt->execute();
+// Set SSL options
+$conn->ssl_set(null, null, $ssl_cert, null, null);
 
-  while ($result = $stmt->fetch(PDO::FETCH_ASSOC))
-  {
-    echo implode(" ", $result);
-    echo "\n";
-  }
-  */
-    
-} catch (Exception $e) {
-  echo "Error: " . $e->getMessage();
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+// Creates a SQL query
+$sql = "SELECT * FROM test";
+$result = $conn->query($sql);
+
+// Loops through the returned arrays from the table and displays them.
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo implode(" ", $row);
+        echo "\n";
+    }
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
