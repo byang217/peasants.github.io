@@ -115,29 +115,47 @@ $queryresult = mysqli_query($conn, $query);
 // Check if the form is submitted and there are selected programs
 if (isset($_POST['submit'])) {
     if (!empty($_POST['programs'])) {
-    // Loop through each selected program and display the information
+    // Create a table to display program details
         echo "<h2>You selected the following programs:</h2>";
-        echo "<ul>";
+        echo "<table border='1'>
+                <tr>
+                    <th>Program Name</th>
+                    <th>Cohort</th>
+                    <th>Deadline</th>
+                    <th>Concurrent Enrollment</th>
+                    <th>Completed Degree</th>
+                    <th>Min GPA</th>
+                    <th>Required Hours</th>
+                    <th>Max Hours</th>
+                    <th>Required Degree</th>
+                    <th>Admission</th>
+                    <th>Facilities</th>
+                    <th>Scholarships</th>
+                    <th>Advising</th>
+                    <th>Contact</th>
+                </tr>";
         foreach ($_POST['programs'] as $opt) {
             $q1 = "SELECT * FROM PROGRAMS WHERE PROGRAM_NAME='$opt'";
             $r1 = mysqli_query($conn, $q1);
             $row= mysqli_fetch_assoc($r1);
-            echo $row["PROGRAM_NAME"] . "<br>";
-            echo $row["COHORT"] . "<br>";
-            echo $row["DEADLINE"] . "<br>";
-            echo $row["CONCURENRL"] . "<br>";
-            echo $row["COMPDEGREE"] . "<br>";
-            echo $row["MINGPA"] . "<br>";
-            echo $row["REQHOURS"] . "<br>";
-            echo $row["MAXHOURS"] . "<br>";
-            echo $row["REQDEGREE"] . "<br>";
-            echo $row["ADMISSION"] . "<br>";
-            echo $row["FACILITIES"] . "<br>";
-            echo $row["SCHOLARSHIPS"] . "<br>";
-            echo $row["ADVISING"] . "<br>";
-            echo $row["CONTACT"] . "<br>";
+            echo "<tr>
+                    <td>" . $row["PROGRAM_NAME"] . "</td>
+                    <td>" . $row["COHORT"] . "</td>
+                    <td>" . $row["DEADLINE"] . "</td>
+                    <td>" . $row["CONCURENRL"] . "</td>
+                    <td>" . $row["COMPDEGREE"] . "</td>
+                    <td>" . $row["MINGPA"] . "</td>
+                    <td>" . $row["REQHOURS"] . "</td>
+                    <td>" . $row["MAXHOURS"] . "</td>
+                    <td>" . $row["REQDEGREE"] . "</td>
+                    <td>" . $row["ADMISSION"] . "</td>
+                    <td>" . $row["FACILITIES"] . "</td>
+                    <td>" . $row["SCHOLARSHIPS"] . "</td>
+                    <td>" . $row["ADVISING"] . "</td>
+                    <td>" . $row["CONTACT"] . "</td>
+                  </tr>";
         }
-        echo "</ul>";
+        echo "</table>";
     } else {
         echo "<p>No programs selected. Please select at least one program.</p>";
     }
