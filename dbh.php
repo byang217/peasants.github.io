@@ -1,18 +1,17 @@
 <?php
 
-// this page establishes a connection to the database
+//this page establishes a connection to the database
 
-$db_server = "etp-database-etp-database.h.aivencloud.com";
-$db_user = "avnadmin";
-$db_pass = "AVNS_b67rNVhKeKkTjvKDtk4";
-$db_name = "defaultdb";
-$conn = "";
-
-// if the web page is unable to connect to the db, display error message
-
-try {
-    $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
-    echo "Success!"
-} catch (mysqli_sql_exception) {
-    echo "Could not connect to Database!";
+$uri = "mysql://avnadmin:AVNS_b67rNVhKeKkTjvKDtk4@etp-database-etp-database.h.aivencloud.com:17731/defaultdb?ssl-mode=REQUIRED";
+$fields = parse_url($uri);
+$host = $fields["host"];
+$port = $fields["port"];
+$dbname = "etpprograms";
+$username = $fields["user"];
+$password = $fields["pass"];
+$ssl_cert = "ca.pem";
+$conn = new mysqli($host, $username, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
+$conn->ssl_set(null, null, $ssl_cert, null, null);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
