@@ -67,6 +67,12 @@ require_once 'config.php';
 */
 
 
+/*
+This code REQUIRES you to run the following command in your VS Code terminal: composer require google/apiclient:^2.0
+
+You WILL need to install composer if you don't already have it, you can do so at this link: https://getcomposer.org/
+*/
+
 require 'vendor/autoload.php';
 
 $client = new \Google_Client();
