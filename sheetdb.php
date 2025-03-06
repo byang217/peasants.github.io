@@ -82,7 +82,7 @@ $client->setDeveloperKey('AIzaSyAToY2POdYL6hQ_Rtd-NqjHTAM0V1P458g');
 $service = new \Google_Service_Sheets($client);
 
 $spreadsheetId = '1-rMk_8c_HGF3n4cKTPlyNs_lFWbCOgduZysMJufFuSg';
-$range = 'Programs!A1:P20'; 
+$range = 'Programs'; 
 $response = $service->spreadsheets_values->get($spreadsheetId, $range);
 $sheetData = $response->getValues();
 
