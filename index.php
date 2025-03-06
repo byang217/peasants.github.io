@@ -96,16 +96,16 @@
                 <div class="programsList" name="programsList" id="programsList">
                     <?php
                         // Retrieves the number of records and their names to display as checkboxes
-                        for ($i = 1; $i < count($sheetData); $i++)
+                        for ($loopVar1 = 1; $loopVar1 < count($sheetData); $loopVar1++)
                         {
                             // Keeps checkboxes checked after submission
                             $checkedBoxes = '';
-                                if (isset($_POST['programs']) && in_array($sheetData[$i][0], $_POST['programs'])) 
+                                if (isset($_POST['programs']) && in_array($sheetData[$loopVar1][0], $_POST['programs'])) 
                                 {
                                     $checkedBoxes = 'checked="checked"';
                                 }
                             // Prints each checkbox
-                            echo $sheetData[$i][1] . " <input type='checkbox' name='programs[]' value='{$sheetData[$i][0]}' $checkedBoxes><br>";
+                            echo $sheetData[$loopVar1][1] . " <input type='checkbox' name='programs[]' value='{$sheetData[$loopVar1][0]}' $checkedBoxes><br>";
                         }
                     ?>
                 </div>
@@ -121,7 +121,7 @@
             
                         // Prints the program names of the checked checkboxes as table headers
                         $checkedPrograms = $_POST['programs'];
-                        for ($i = 0; $i < count($checkedPrograms); $i++)
+                        for ($loopVar2 = 0; $loopVar2 < count($checkedPrograms); $loopVar2++)
                         {
                             // Stops the user if more than 5 programs are selected
                             if (count($checkedPrograms) > 5)
@@ -130,32 +130,32 @@
                                 exit;
                             }
                             // Start of table row
-                            if ($i == 0)
+                            if ($loopVar2 == 0)
                             {
                                 echo "<tr>";
                                 echo "<th></th>";
                             }
 
-                            echo "<th>{$sheetData[$checkedPrograms[$i]][1]}</th>";
+                            echo "<th>{$sheetData[$checkedPrograms[$loopVar2]][1]}</th>";
 
                             // End of table row
-                            if ($i == count($sheetData))
+                            if ($loopVar2 == count($sheetData))
                             {
                                 echo "</tr>";
                             }
                         }
                         // Prints all the attributes for each of the programs selected
-                        for ($i = 2; $i < count($sheetData[0]); $i++)
+                        for ($loopVar3 = 2; $loopVar3 < count($sheetData[0]); $loopVar3++)
                         {
                             echo "<tr>";
-                            for ($ii = 0; $ii < count($checkedPrograms); $ii++)
+                            for ($loopVar4 = 0; $loopVar4 < count($checkedPrograms); $loopVar4++)
                             {
                                 // Prints row header, ex: COHORT
-                                if ($ii == 0)
+                                if ($loopVar4 == 0)
                                 {
-                                    echo "<td>{$sheetData[0][$i]}";
+                                    echo "<td>{$sheetData[0][$loopVar3]}";
                                 }
-                                echo "<td>{$sheetData[$checkedPrograms[$ii]][$i]}</td>";
+                                echo "<td>{$sheetData[$checkedPrograms[$loopVar4]][$loopVar3]}</td>";
                             }
                             echo "</tr>";
                         }
