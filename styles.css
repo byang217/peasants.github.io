@@ -1,0 +1,147 @@
+/* Overall Webpage Styling */
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #002f4b;
+    color: white;
+}
+header {
+    background-color: #005b94;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 4px solid #003f66;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+header img {
+    height: 80px;
+    position: absolute;
+    left: 20px;
+}
+header h1 {
+    text-align: center;
+    flex-grow: 1;
+}
+#header1 {
+    border: none;
+    background-color:#002f4b;
+    color:none;
+}
+main {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 20px;
+    background-color: #002f4b;
+    color:white;
+}
+.contact {
+    text-align: center;
+    padding: 5px;
+    background-color: #003f66;
+    color: white;
+    border-radius: 10px;
+    width: 180px;
+    border: 2px solid #a7c6dd;
+    margin-top: auto;
+    margin-bottom: 20px;
+    align-self: center;
+    padding: 10px;
+}
+.contact h2 {
+    font-size: 16px;
+}
+.contact p {
+    font-size: 12px;
+}
+.contact a {
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+/* Program Selection Styling */
+
+
+
+.programs-form {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+.programsList input {
+    margin-right:10px;
+}
+#submit, #clear {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right:10px;
+}
+#submit:hover, #clear:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Program Table Styling */
+
+
+
+#programs table{
+    width:75%;
+    margin:auto;
+    justify-content:center;
+    border-collapse:collapse;
+}
+#programTable {
+    width:50%;
+    margin:auto;
+    justify-content:center;
+}
+td {
+    padding: 8px 12px;
+    text-align:left;
+    border: 1px;
+    border-style: solid;
+    border-color:#cccccc;
+    color:black;
+}
+th {
+    padding: 8px 12px;
+    text-align:left;
+    border: 1px solid black;
+    background-color:#1155cc;
+    color:black;
+}
+tr {
+    background-color:darkblue;
+}
+.evenColor {
+    background-color:#6d9eeb;
+}
+.oddColor {
+    background-color:#c9daf8;
+}
