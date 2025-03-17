@@ -7,146 +7,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Enhanced Transfer Programs Comparison Tool</title>
-            <style>
-                * {
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                }
-                body {
-                    font-family: Arial, sans-serif;
-                    display: flex;
-                    flex-direction: column;
-                    min-height: 100vh;
-                    background-color: #002f4b;
-                    color: white;
-                }
-                header {
-                    background-color: #005b94;
-                    padding: 10px 20px;
-                    font-size: 24px;
-                    font-weight: bold;
-                    border-bottom: 4px solid #003f66;
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    position: relative;
-                }
-                header img {
-                    height: 80px;
-                    position: absolute;
-                    left: 20px;
-                }
-                header h1 {
-                    text-align: center;
-                    flex-grow: 1;
-                }
-                main {
-                    flex-grow: 1;
-                    text-align: center;
-                    padding: 20px;
-                    background-color: #002f4b;
-                    color: white;
-                } 
-                /* Style for the submit/clear button */
-                #submit, #clear {
-                    margin-top: 15px;
-                    padding: 10px 20px;
-                    background-color: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    margin-right:10px;
-                }
-                /* Submit/clear button hover effect */
-                #submit:hover, #clear:hover {
-                    background-color: #0056b3;
-                }
-                /* Style for checkboxes */
-                .programsList input {
-                    margin-right: 10px;
-                }
-                /* Style for the submit/clear button */
-                #submit, #clear {
-                    margin-top: 15px;
-                    padding: 10px 20px;
-                    background-color: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
-                .contact {
-                    text-align: center;
-                    padding: 5px;
-                    background-color: #003f66;
-                    color: white;
-                    border-radius: 10px;
-                    width: 180px;
-                    border: 2px solid #a7c6dd;
-                    margin-top: auto;
-                    margin-bottom: 20px;
-                    align-self: center;
-                    padding: 10px;
-                }
-
-                .contact h2 {
-                    font-size: 16px;
-                }
-
-                .contact p {
-                    font-size: 12px;
-                }
-
-                .contact a {
-                    font-size: 12px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    color: white;
-                }
-                td {
-                    padding: 8px 12px;
-                    text-align:left;
-                    border: 1px;
-                    border-style: solid;
-                    border-color:#cccccc;
-                    color:black;
-                }
-                th {
-                    padding: 8px 12px;
-                    text-align:left;
-                    border: 1px solid black;
-                    background-color:#1155cc;
-                    color:black;
-                }
-                tr {
-                    background-color:darkblue;
-                }
-                #header1 {
-                    border: none;
-                    background-color:#002f4b;
-                    color:none;
-                }
-                .evenColor {
-                    background-color:#6d9eeb;
-                }
-                .oddColor {
-                    background-color:#c9daf8;
-                }
-                #programs {
-                    width:75%;
-                    margin:auto;
-                    justify-content:center;
-                }
-                #programTable {
-                    width:50%;
-                    margin:auto;
-                    justify-content:center;
-                }
-
-            </style>
+            <link rel="stylesheet" href="styles.css">
         </head>
         <body>
             <header>
@@ -157,6 +18,11 @@
                 <form method="POST" class="programs-form">
                     <div class="programsList" name="programsList" id="programsList">
                         <?php
+                            // Code to clear checkboxes and table data
+                            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['clear_table']))
+                            {
+                                unset($_POST['programs']);
+                            }
                             // Retrieves the number of records and their names to display as checkboxes
                             for ($loopVar1 = 1; $loopVar1 < count($sheetData); $loopVar1++)
                             {
@@ -167,23 +33,18 @@
                                         $checkedBoxes = 'checked="checked"';
                                     }
                                 // Prints each checkbox
-                                echo $sheetData[$loopVar1][1] . " <input type='checkbox' name='programs[]' value='{$sheetData[$loopVar1][0]}' $checkedBoxes><br>";
+                                echo "<input type='checkbox' name='programs[]' value='{$sheetData[$loopVar1][0]}' $checkedBoxes>" . $sheetData[$loopVar1][1] . "<br>";
                             }
                         ?>
                     </div>
-                    <input type="submit" id="submit" name="submit" value="Submit"></input>
-                    <button type="submit" id="clear" name="clear_table">Clear</button>
+                    <div class="button-container">
+                        <input type="submit" id="submit" name="submit" value="Submit"></input>
+                        <button type="submit" id="clear" name="clear_table">Clear</button>
+                    </div>
                 </form>
                 <div id='programs'>
                     <table name="programTable" id="programTable">
                 <?php
-                    // Code to clear checkboxes and table data
-                    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['clear_table']))
-                    {
-                        $_SESSION['programs'] = [];
-                    }
-
-
                     if (isset($_POST['submit'])) 
                     {
                         if (!empty($_POST['programs'])) 
