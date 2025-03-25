@@ -91,23 +91,32 @@ main {
 .programsList input {
     margin-right:10px;
 }
-#submit, #clear {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right:10px;
-}
-#submit:hover, #clear:hover {
-    background-color: #0056b3;
-}
+
 
 input[type='checkbox']{
     width: 20px;
     height: 20px;
+}
+#submit, #clear {
+    margin-top: 15px;
+    padding: 2px 14px;
+    background-color: #ffffffe1;
+    color: rgb(3, 3, 3);
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right:10px;
+    box-shadow: rgb(12, 84, 238) -2px -2px 0px 2px, rgb(108, 193, 250) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px; 
+    transition: all 0.4s;
+}
+#submit:hover, #clear:hover {
+    box-shadow: rgb(83, 166, 221) -2px -2px 0px 2px, rgb(24, 90, 231) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px; 
+    transform: scale(1.00);
 }
 
 
