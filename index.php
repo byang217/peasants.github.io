@@ -28,12 +28,12 @@
                             {
                                 // Keeps checkboxes checked after submission
                                 $checkedBoxes = '';
-                                    if (isset($_POST['programs']) && in_array($sheetData[$loopVar1][0], $_POST['programs'])) 
+                                    if (isset($_POST['programs']) && in_array($sheetData[$loopVar1][1], $_POST['programs'])) 
                                     {
                                         $checkedBoxes = 'checked="checked"';
                                     }
                                 // Prints each checkbox
-                                echo "<input type='checkbox' name='programs[]' value='{$sheetData[$loopVar1][0]}' $checkedBoxes>" . $sheetData[$loopVar1][1] . "<br>";
+                                echo "<input type='checkbox' name='programs[]' value='{$sheetData[$loopVar1][1]}' $checkedBoxes>" . $sheetData[$loopVar1][2] . "<br>";
                             }
                         ?>
                     </div>
@@ -66,7 +66,7 @@
                                     echo "<th>Details</th>";
                                 }
 
-                                echo "<th>{$sheetData[$checkedPrograms[$loopVar2]][1]}</th>";
+                                echo "<th>{$sheetData[$checkedPrograms[$loopVar2]][2]}</th>";
 
                                 // End of table row
                                 if ($loopVar2 == count($sheetData))
@@ -75,7 +75,7 @@
                                 }
                             }
                             // Prints all the attributes for each of the programs selected
-                            for ($loopVar3 = 2; $loopVar3 < count($sheetData[0]); $loopVar3++)
+                            for ($loopVar3 = 3; $loopVar3 < count($sheetData[0]); $loopVar3++)
                             {
                                 if ($loopVar3 % 2 == 0)
                                 {
