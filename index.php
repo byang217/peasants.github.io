@@ -42,15 +42,33 @@
                         <button type="submit" id="clear" name="clear_table">Clear</button>
                     </div>
                 </form>
-                <div id='programs'>
-                    <table name="programTable" id="programTable">
                 <?php
                     if (isset($_POST['submit'])) 
                     {
                         if (!empty($_POST['programs'])) 
                         {
-                            // Prints the program names of the checked checkboxes as table headers
                             $checkedPrograms = $_POST['programs'];
+                            // Changes width of table depending on how many programs are selected
+                            switch (count($checkedPrograms))
+                            {
+                                case 1:
+                                    echo "<div id='programs'><table name='programTable' id='programTable' style='width:50%;'>";
+                                    break;
+                                case 2:
+                                    echo "<div id='programs'><table name='programTable' id='programTable' style='width:60%;'>";
+                                    break;
+                                case 3:
+                                    echo "<div id='programs'><table name='programTable' id='programTable' style='width:70%;'>";
+                                    break;
+                                case 4:
+                                    echo "<div id='programs'><table name='programTable' id='programTable' style='width:80%;'>";
+                                    break;
+                                case 5:
+                                    echo "<div id='programs'><table name='programTable' id='programTable' style='width:100%;'>";
+                                    break;
+                            }
+                            // Prints the program names of the checked checkboxes as table headers
+                            
                             for ($loopVar2 = 0; $loopVar2 < count($checkedPrograms); $loopVar2++)
                             {
                                 // Stops the user if more than 5 programs are selected
@@ -97,8 +115,10 @@
                                 }
                                 echo "</tr>";
                             }
-                            
-                            
+                        }
+                        else if (empty($_POST['programs']))
+                        {
+                            echo "<h1>Please Select Your Programs to Compare</h1>";
                         }
                     }
                 ?>
