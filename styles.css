@@ -1,6 +1,4 @@
-/* Overall Webpage Styling */
-
-
+/* Overall Webpage Styling For Desktops */
 
 * {
     margin: 0;
@@ -14,7 +12,6 @@ body {
     min-height: 100vh;
     background-color: #002f4b;
     color: white;
-    font-size: 20px;
 }
 header {
     background-color: #005b94;
@@ -29,18 +26,18 @@ header {
     position: relative;
 }
 header img {
-    height: 80px;
+    height: 90%;
     position: absolute;
-    left: 20px;
+    left:20px;
 }
 header h1 {
     text-align: center;
     flex-grow: 1;
+    font-size:100%;
 }
 #header1 {
     border: none;
     background-color:#002f4b;
-    color:none;
 }
 main {
     display: flex;
@@ -87,15 +84,10 @@ main {
     flex-direction:column;
     align-items:flex-start;
     margin-bottom:20px;
+    font-size:20px;
 }
 .programsList input {
     margin-right:10px;
-}
-
-
-input[type='checkbox']{
-    width: 20px;
-    height: 20px;
 }
 #submit, #clear {
     margin-top: 15px;
@@ -112,30 +104,38 @@ input[type='checkbox']{
     font-weight: bold;
     margin-right:10px;
     box-shadow: rgb(12, 84, 238) -2px -2px 0px 2px, rgb(108, 193, 250) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px; 
-    /*transition: all 0.4s; */
+    transition: all 0.4s;
+    margin-left:3%
 }
 #submit:hover, #clear:hover {
+    background-color: #0056b3;
     box-shadow: rgb(83, 166, 221) -2px -2px 0px 2px, rgb(24, 90, 231) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px; 
-    /*transform: scale(1.00);*/
 }
+input[type='checkbox'] {
 
+    transform: scale(1.35);
+}
+.button-container {
+    display:flex;
+    flex-direction:row;
+    margin:auto;
+    justify-content:center;
+}
 
 
 /* Program Table Styling */
 
 
-
-#programs table{
-    width:75%;
+#programTable{
+    width:95%;
     margin:auto;
     justify-content:center;
     border-collapse:collapse;
+    table-layout:fixed;
+    font-size:80%;
+
 }
-#programTable {
-    width:50%;
-    margin:auto;
-    justify-content:center;
-}
+
 td {
     padding: 8px 12px;
     text-align:left;
@@ -159,4 +159,206 @@ tr {
 }
 .oddColor {
     background-color:#c9daf8;
+}
+
+/* Media Styling for Large Tablets */ 
+
+@media (max-width:1024px) and (min-width: 768px)
+{
+    /* Header Styling */
+    header h1 {
+        font-size:80%;
+    }
+    header img {
+        height:90%;
+    }
+    /* Selection Styling */
+    #submit, #clear {
+        transform: scale(0.9);
+        margin-left:-1.5%;
+    }
+    #submit:hover, #clear:hover {
+        transform: scale(0.9);
+    }
+    /* Table Styling */
+    #programTable {
+        width:95%;
+    }
+    td, th {
+        padding:1%;
+        font-size:75%;
+        width:5%;
+    }
+}
+
+/* Styling for Smaller Tablets  */
+
+@media (max-width:767px) and (min-width:581px)
+{
+    /* Header Styling */
+    header h1 {
+        font-size:70%;
+    }
+    header img {
+        height:80%;
+    }
+    /* Selection Styling */
+    #submit, #clear {
+        transform: scale(0.8);
+        margin-left:-6.5%;
+    }
+    #submit:hover, #clear:hover {
+        transform: scale(0.8);
+    }
+    #programTable {
+        width:95%;
+    }
+    td, th {
+        padding: 1%;
+        font-size: 65%;
+        width:5%;
+    }
+}
+
+/* Styling for smoothness when resizing windows */
+
+@media (max-width: 580px) and (min-width: 481px)
+{
+    /* Header Styling */
+    header h1 {
+        font-size:50%;
+    }
+    header img {
+        height:80%;
+    }
+    /* Selection Styling */
+    #submit, #clear {
+        transform: scale(0.75);
+        margin-left:-10%;
+    }
+    #submit:hover, #clear:hover {
+        transform: scale(0.75);
+    }
+    #programTable {
+        width:95%;
+    }
+    td, th {
+        padding: 1%;
+        font-size: 50%;
+    }
+}
+
+/* Styling for bigger phones */
+
+@media (max-width:480px)
+{
+        /* Header Styling */
+        header h1 {
+            font-size:50%;
+        }
+        header img {
+            height:80%;
+        }
+        /* Selection Styling */
+        #submit, #clear {
+            transform: scale(0.7);
+            margin-left:-12.5%;
+        }
+        #submit:hover, #clear:hover {
+            transform: scale(0.7);
+        }
+        #programTable {
+            width:95%;
+        }
+        .programsList {
+            font-size:67.5%;
+        }
+        input[type='checkbox'] {
+    
+            transform: scale(1.15);
+        }
+        td, th {
+            padding: 1%;
+            font-size: 40%;
+        }
+}
+
+/* Styling for smaller phones */
+
+@media (max-width:380px)
+{
+        /* Header Styling */
+        header h1 {
+            font-size:32.5%;
+        }
+        header img {
+            height:80%;
+            word-wrap: true;
+        }
+        /* Selection Styling */
+        #submit, #clear {
+            transform: scale(0.65);
+            margin-left:-15%;
+        }
+        #submit:hover, #clear:hover {
+            transform: scale(0.65);
+        }
+        #programTable {
+            width:95%;
+        }
+        .programsList {
+            font-size:57%;
+        }
+        input[type='checkbox'] {
+    
+            transform: scale(1);
+        }
+        td, th {
+            padding: 1%;
+            font-size: 25%;
+        }
+}
+
+/* Styling for really small phones or really small webpages */
+
+@media (max-width: 260px)
+{
+       /* Header Styling */
+       header h1 {
+        font-size:25%;
+    }
+    header img {
+        height:80%;
+    }
+    /* Selection Styling */
+    #submit, #clear {
+        transform: scale(0.6);
+        margin-left:-17.5%;
+    }
+    #submit:hover, #clear:hover {
+        transform: scale(0.6);
+    }
+    #programTable {
+        width:95%;
+    }
+    .programsList {
+        font-size:40%;
+    }
+    input[type='checkbox'] {
+
+        transform: scale(0.85);
+    }
+    td, th {
+        padding: 1%;
+        font-size: 17.5%;
+    }
+}
+
+/* Fixes logo interfering with title when under 215 px */
+@media (max-width: 215px)
+{
+    header img {
+        transform: scale(0.5);
+        left: 2px;
+    }
 }
