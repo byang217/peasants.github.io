@@ -16,7 +16,9 @@
     if ($curTime - $lastCall <= 0.85)
     {
         echo "<style>body{background:#002f4b;}</style>";
-        echo "<h1 style=color:white;text-align:center;>You're sending too many requests! Please wait a moment and try again.</h1>";
+        echo "<h1 style=color:white;text-align:center;>You're sending too many requests! Please wait a moment and try again. We will send you back shortly :D</h1>";
+
+        header("refresh: 3");
         exit;
     }
 
@@ -91,7 +93,7 @@
                                 echo "<div id='programs'><table name='programTable' id='programTable' style='width:80%;'>";
                                 break;
                             case 5:
-                                echo "<div id='programs'><table name='programTable' id='programTable' style='width:100%;'>";
+                                echo "<div id='programs'><table name='programTable' id='programTable' style='width:90%;'>";
                                 break;
                         }
 
@@ -143,7 +145,7 @@
                                 {
                                     echo "<td>{$sheetData[0][$loopVar3]}";
                                 }
-                                
+
                                 // Prints attributes for programs
                                 echo "<td>{$sheetData[$checkedPrograms[$loopVar4]][$loopVar3]}</td>";
                             }
@@ -160,6 +162,7 @@
             ?>
             </table>
             </div>
+            
         </main>
     </body>
 </html>
