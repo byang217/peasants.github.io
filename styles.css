@@ -126,14 +126,16 @@ input[type='checkbox'] {
 /* Program Table Styling */
 
 
-#programTable{
-    width:95%;
-    margin:auto;
-    justify-content:center;
-    border-collapse:collapse;
-    table-layout:fixed;
-    font-size:80%;
+#programs {
+    width:100%;
+    overflow-x:auto;
+    
+}
 
+#programTable{
+    border-collapse:collapse;
+    font-size:80%;
+    margin: 0 auto;
 }
 
 td {
@@ -161,6 +163,174 @@ tr {
     background-color:#c9daf8;
 }
 
+
+/* Overall Webpage Styling For Desktops */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #002f4b;
+    color: white;
+}
+header {
+    background-color: #005b94;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 4px solid #003f66;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+header img {
+    height: 90%;
+    position: absolute;
+    left:20px;
+}
+header h1 {
+    text-align: center;
+    flex-grow: 1;
+    font-size:100%;
+}
+#header1 {
+    border: none;
+    background-color:#002f4b;
+}
+main {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 20px;
+    background-color: #002f4b;
+    color:white;
+}
+.contact {
+    text-align: center;
+    padding: 5px;
+    background-color: #003f66;
+    color: white;
+    border-radius: 10px;
+    width: 180px;
+    border: 2px solid #a7c6dd;
+    margin-top: auto;
+    margin-bottom: 20px;
+    align-self: center;
+    padding: 10px;
+}
+.contact h2 {
+    font-size: 16px;
+}
+.contact p {
+    font-size: 12px;
+}
+.contact a {
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+/* Program Selection Styling */
+
+
+
+.programs-form {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-bottom:20px;
+    font-size:20px;
+}
+.programsList input {
+    margin-right:10px;
+}
+#submit, #clear {
+    margin-top: 15px;
+    padding: 2px 14px;
+    background-color: #ffffffe1;
+    color: rgb(3, 3, 3);
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right:10px;
+    box-shadow: rgb(12, 84, 238) -2px -2px 0px 2px, rgb(108, 193, 250) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px; 
+    transition: all 0.4s;
+    margin-left:3%
+}
+#submit:hover, #clear:hover {
+    background-color: #0056b3;
+    box-shadow: rgb(83, 166, 221) -2px -2px 0px 2px, rgb(24, 90, 231) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px; 
+}
+input[type='checkbox'] {
+
+    transform: scale(1.35);
+}
+.button-container {
+    display:flex;
+    flex-direction:row;
+    margin:auto;
+    justify-content:center;
+}
+
+
+/* Program Table Styling */
+
+
+#programs {
+    width:100%;
+    overflow-x:auto;
+    
+}
+
+#programTable{
+    border-collapse:collapse;
+    font-size:80%;
+    margin: 0 auto;
+    
+}
+
+td {
+    padding: 8px 12px;
+    text-align:left;
+    border: 1px;
+    border-style: solid;
+    border-color:#cccccc;
+    color:black;
+}
+th {
+    padding: 8px 12px;
+    text-align:left;
+    border: 1px solid black;
+    background-color:#1155cc;
+    color:black;
+}
+tr {
+    background-color:darkblue;
+}
+.evenColor {
+    background-color:#6d9eeb;
+}
+.oddColor {
+    background-color:#c9daf8;
+}
+
+
 /* Media Styling for Large Tablets */ 
 
 @media (max-width:1024px) and (min-width: 768px)
@@ -181,13 +351,8 @@ tr {
         transform: scale(0.9);
     }
     /* Table Styling */
-    #programTable {
-        width:95%;
-    }
     td, th {
-        padding:1%;
-        font-size:75%;
-        width:5%;
+        font-size:90%;
     }
 }
 
@@ -210,13 +375,8 @@ tr {
     #submit:hover, #clear:hover {
         transform: scale(0.8);
     }
-    #programTable {
-        width:95%;
-    }
     td, th {
-        padding: 1%;
-        font-size: 65%;
-        width:5%;
+        font-size: 85%;
     }
 }
 
@@ -239,12 +399,8 @@ tr {
     #submit:hover, #clear:hover {
         transform: scale(0.75);
     }
-    #programTable {
-        width:95%;
-    }
     td, th {
-        padding: 1%;
-        font-size: 50%;
+        font-size: 80%;
     }
 }
 
@@ -267,9 +423,6 @@ tr {
         #submit:hover, #clear:hover {
             transform: scale(0.7);
         }
-        #programTable {
-            width:95%;
-        }
         .programsList {
             font-size:67.5%;
         }
@@ -278,8 +431,7 @@ tr {
             transform: scale(1.15);
         }
         td, th {
-            padding: 1%;
-            font-size: 40%;
+            font-size: 75%;
         }
 }
 
@@ -303,9 +455,6 @@ tr {
         #submit:hover, #clear:hover {
             transform: scale(0.65);
         }
-        #programTable {
-            width:95%;
-        }
         .programsList {
             font-size:57%;
         }
@@ -314,8 +463,7 @@ tr {
             transform: scale(1);
         }
         td, th {
-            padding: 1%;
-            font-size: 25%;
+            font-size: 70%;
         }
 }
 
@@ -324,7 +472,7 @@ tr {
 @media (max-width: 260px)
 {
        /* Header Styling */
-       header h1 {
+    header h1 {
         font-size:25%;
     }
     header img {
@@ -338,9 +486,6 @@ tr {
     #submit:hover, #clear:hover {
         transform: scale(0.6);
     }
-    #programTable {
-        width:95%;
-    }
     .programsList {
         font-size:40%;
     }
@@ -349,8 +494,7 @@ tr {
         transform: scale(0.85);
     }
     td, th {
-        padding: 1%;
-        font-size: 17.5%;
+        font-size: 70%;
     }
 }
 
@@ -361,4 +505,9 @@ tr {
         transform: scale(0.5);
         left: 2px;
     }
+    td, th {
+        padding:4px 6px;
+    }
 }
+
+
